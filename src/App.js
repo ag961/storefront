@@ -1,7 +1,8 @@
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import Categories from '../src/components/Categories';
-import Products from '../src/components/Products';
+import './app.scss';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import Categories from './components/categories/Categories';
+import Products from './components/products/Products';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Categories />
         <Products />
       </main>
+
       <Footer />
     </>
   );
