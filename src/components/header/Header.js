@@ -1,7 +1,9 @@
+import './header.scss';
+
 function Header() {
   return (
     <header>
-      <h1>Header</h1>
+      <h1>Virtual Store</h1>
     </header>
   )
 }
