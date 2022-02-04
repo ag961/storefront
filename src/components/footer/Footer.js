@@ -1,9 +1,13 @@
+import { Box } from "@mui/material";
 
 function Footer() {
   return (
     <footer>
-      Ayrat Gimranov 2022
+      <Box className='bodyContainer'>
+        &copy; Ayrat Gimranov 2022
+      </Box>
     </footer>
+
   )
 }
 

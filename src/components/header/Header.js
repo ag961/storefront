@@ -1,10 +1,16 @@
 import './header.scss';
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import '../../app.scss';
 
 function Header() {
   return (
-    <header>
-      <h1>Virtual Store</h1>
-    </header>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6">
+          Virtual Store
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 }
 

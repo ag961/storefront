@@ -1,4 +1,4 @@
-import { Box, ButtonGroup, Button, Paper } from "@mui/material";
+import { Box, Button} from "@mui/material";
 import './categories.scss';
 import { connect } from 'react-redux';
 import { changeActiveCategory } from '../../store/storeState';
@@ -7,13 +7,17 @@ function Categories(props) {
   console.log('props', props)
   return (
     <Box className="categories">
-      <h2>Categories</h2>
       <Box className="categories__buttongroup">
-        <Paper>
-          <ButtonGroup variant="text" aria-label="categories">
-            {props.categories.map((category, i) => <Button key={i} onClick={() => { props.changeActiveCategory(category.name) }}>{category.displayName}</Button>)}
-          </ButtonGroup>
-        </Paper>
+        {props.categories.map((category, i) => <Button
+          key={i}
+          sx={{
+            "&.MuiButton-text:hover": { border: "1px white solid" },
+            border: "1px transparent solid",
+            borderRadius: 0,
+            maxHeight: "2rem"
+          }}
+          color="inherit"
+          onClick={() => { props.changeActiveCategory(category.name) }}>{category.displayName}</Button>)}
       </Box>
     </Box>
   )
