@@ -1,5 +1,10 @@
-body{
-  background-color: rgb(173, 187, 204);
+html, body{
+  background-color: rgb(225, 230, 235);
+  margin: 0;
+  padding: 0;
+}
+
+.bodyContainer{
   max-width: 1600px;
   margin: 0 auto;
 }

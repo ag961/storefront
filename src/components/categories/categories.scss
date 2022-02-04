@@ -1,8 +1,11 @@
 .categories{
-  margin-top: 4rem;
+  background-color: rgb(21, 54, 87);
 }
 
 .categories__buttongroup{
   display: flex;
   justify-content: left;
+  color: rgb(255, 255, 255);
+  padding: 0.4rem;
+  padding-left: 1em;
 }
