@@ -2,9 +2,21 @@ html, body{
   background-color: rgb(225, 230, 235);
   margin: 0;
   padding: 0;
+
 }
 
 .bodyContainer{
   max-width: 1600px;
   margin: 0 auto;
+}
+
+//code below was used from https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/
+
+#all-container{
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-container{
+  padding-bottom: 2.5rem;
 }

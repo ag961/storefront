@@ -7,19 +7,18 @@ import { connect } from 'react-redux';
 function Products(props) {
   return (
     <Box className="products">
-      <h2>Products</h2>
+      <h2>{props.activeCategory.toUpperCase()}</h2>
       <Box className="products__list">
-      {props.products.map((product, i) => props.activeCategory === product.category ? <ItemCard key={i} product={product}/> : '' )}  
+      {props.filteredProducts.map((product, i) => <ItemCard key={i} product={product}/>)}  
       </Box>
     </Box>
   )
 }
 
-
 const mapStateToProps = (state) => {
   console.log('state', state.activeCategoryReducer)
   return {
-    products: state.activeCategoryReducer.products,
+    filteredProducts: state.productsReducer.filteredList,
     activeCategory: state.activeCategoryReducer.activeCategory
   }
 }
