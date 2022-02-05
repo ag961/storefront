@@ -1,0 +1,14 @@
+.simpleCart{
+  position: absolute;
+  top: 10rem;
+  right: 0.5rem;
+  width: 200px;
+  // padding: 0.rem;
+}
+
+.simpleCart__contents{
+  padding: 0.5rem;
+  font-size: large;
+  line-height: 1.5;
+  background-color: rgba(250, 207, 157, 0.671);
+}
