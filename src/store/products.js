@@ -9,8 +9,7 @@ let initialState = {
     { name: 'doll', displayName: 'Doll', category: 'toys', description: 'Blond Barbie doll', price: '$40', count: 30 },
     { name: 'tv-stand', displayName: 'TV-stand', category: 'furniture', description: 'grey wooden TV stand, 20 inch tall', price: '$110', count: 10 },
     { name: 'chair', displayName: 'chair', category: 'furniture', description: 'cushioned, wooden, white in color', price: '$80', count: 16 },
-  ],
-  filteredList: []
+  ]
 }
 
 //2 design actions
@@ -36,20 +35,27 @@ export const productsReducer = (state = initialState, action) => {
   switch (type) {
     default:
       return state
-    case 'CHANGE_CATEGORY':
-      console.log('hit CHANGE_CATEGORY action in productsReducer');
-      return { ...state, filteredList: state.products.filter(product => product.category === payload) }
-    case 'CART/ADD_TO_CART':
 
+    case 'CART/ADD_TO_CART':
       let newProducts = state.products.map(product => {
         if (product.name === payload.name) {
           return { ...product, count: product.count - 1 }
         } else return product
       })
+      return { ...state, products: newProducts }
 
-      return { ...state, products: newProducts, filteredList: state.filteredList.map(product => {
-        if(product.name === payload.name) return {...product, count: product.count - 1}
-        else return product      
-      }) }
+    case 'CART/DELETE_FROM_CART':
+
+      let products = state.products.map(product => {
+        if (product.name === payload.name) {
+          product.count += payload.orderedQuantity
+          return product
+        }
+        return product;
+      })
+
+      return { ...state, products }
+
+
   }
 };

@@ -12,3 +12,8 @@
   line-height: 1.5;
   background-color: rgba(250, 207, 157, 0.671);
 }
+
+.simpleCart__item{
+  display: flex;
+  justify-content: space-between;
+}

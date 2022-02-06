@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { changeActiveCategory } from '../../store/storeState';
 
 function Categories(props) {
-  console.log('props', props)
   return (
     <Box className="categories">
       <Box className="categories__buttongroup">
@@ -24,7 +23,6 @@ function Categories(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state.activeCategoryReducer)
   return {
     categories: state.activeCategoryReducer.categories
   }
