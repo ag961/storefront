@@ -11,7 +11,6 @@ let initialState = {
   activeCategory: ''
 }
 
-
 //2 design actions
 
 export const changeActiveCategory = (category) => {
@@ -30,7 +29,6 @@ export const activeCategoryReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'CHANGE_CATEGORY':
-      console.log('hit CHANGE_CATEGORY action')
       return { ...state, activeCategory: payload }
     default:
       return state
