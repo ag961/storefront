@@ -1,0 +1,27 @@
+.bigCart{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.list__secondaryText{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;   
+}
+
+.list__paragraph1{
+  margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.list__paragraph2{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.list__delete{
+  color: cornflowerblue;
+  &:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
