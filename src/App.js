@@ -5,6 +5,8 @@ import Categories from './components/categories/Categories';
 import Products from './components/products/Products';
 import SimpleCart from './components/cart/SimpleCart';
 import { Box } from "@mui/material";
+import BigCart from './components/cart/BigCart';
+// import { BrowserRouter as Router, Route } from 'react-router';
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
             <Products />
           </Box>
           <SimpleCart />
+          <BigCart />
         </div>
         <Footer />
       </div>
