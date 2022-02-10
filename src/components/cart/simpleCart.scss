@@ -10,10 +10,11 @@
   padding: 0.5rem;
   font-size: large;
   line-height: 1.5;
-  background-color: rgba(250, 207, 157, 0.671);
+  background-color: rgb(238, 220, 187);
 }
 
 .simpleCart__item{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }

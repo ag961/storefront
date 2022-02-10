@@ -1,12 +1,13 @@
 import './app.scss';
+import { Routes, Route} from "react-router-dom";
+import { Box } from "@mui/material";
+
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Categories from './components/categories/Categories';
 import Products from './components/products/Products';
 import SimpleCart from './components/cart/SimpleCart';
-import { Box } from "@mui/material";
 import BigCart from './components/cart/BigCart';
-// import { BrowserRouter as Router, Route } from 'react-router';
 
 function App() {
 
@@ -15,12 +16,18 @@ function App() {
       <div id="all-container">
         <div id="content-container">
           <Header />
-          <Categories />
-          <Box className='bodyContainer'>
-            <Products />
-          </Box>
-          <SimpleCart />
-          <BigCart />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Categories />
+                <SimpleCart />
+                <Box className='bodyContainer'>
+                  <Products />
+                </Box>
+              </>
+            } />
+            <Route path="/cart" element={<BigCart />} />
+          </Routes>
         </div>
         <Footer />
       </div>

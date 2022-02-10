@@ -1,31 +1,57 @@
+import './bigCart.scss';
+
 import { connect } from 'react-redux';
-import { Box, Paper } from "@mui/material";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-// import './simpleCart.scss';
+import { Box, Paper, List, ListItem, Divider, ListItemText } from "@mui/material";
 import { deleteFromCart } from '../../store/cart';
 
 function BigCart(props) {
 
   let total = props.cart.reduce((initialValue, product) => {
-    // let product1subtotal = product1.price * product1.orderedQuantity;
-    // let product2subtotal = product2.price * product2.orderedQuantity;
-    console.log('product1', initialValue);
     return initialValue + (product.price * product.orderedQuantity);
   }, 0)
 
-  console.log('Total:', total);
-
   return (<Box className='bigCart'>
-    <Paper>
+    <Paper sx={{ p: 2, margin: 'auto', maxWidth: '900px' }}>
       <div className="bigCart__contents">
-        <h2>SHOPPING CART</h2>
-        <ul>
-          {props.cart.map((product, i) => <li key={i}><Box className="simpleCart__item"><span>{product.displayName}</span><span>Price: ${product.price}</span> X <span>Quantity: {product.orderedQuantity}</span> <span>Subtotal for item: ${product.price * product.orderedQuantity}</span><HighlightOffIcon style={{ color: 'red' }} onClick={() => { props.deleteFromCart(product) }} /></Box></li>)}
-        </ul>
+        <h2>Order Summary</h2>
+        <Divider />
+        <List>
+          {props.cart.map((product, i) => (
+            <>
+              <ListItem disableGutters={true}>
+                <ListItemText
+                  primary={<Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+                    <span>
+                      {product.displayName}
+                    </span>
+                    <span>
+                      ${product.price * product.orderedQuantity}
+                    </span>
+                  </Box>
+                  }
+                  secondary={
+                    <>
+                      <p className="list__paragraph1">Price: ${product.price}</p>
+                      <Box sx={{ display: "flex", gap: "1rem" }}>
+                        <p className="list__paragraph2"> Qty: {product.orderedQuantity}</p>
+                        <Divider orientation="vertical" flexItem />
+                        <p className="list__paragraph2 list__delete" onClick={() => { props.deleteFromCart(product) }}>Delete</p>
+                      </Box>
+                    </>
+                  }
+                />
+              </ListItem>
+              <Divider component="li" />
+            </>
+          ))}
+        </List>
       </div>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Box sx={{minWidth: '10rem'}}>
-          {!props.cart.length ? 'Your cart is empty' : <h3>Total: ${total}</h3>}
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box sx={{ minWidth: '10rem' }}>
+          <h3>Total ({props.totalItems} items) :</h3>
+        </Box>
+        <Box>
+          <h3>${total}</h3>
         </Box>
       </Box>
     </Paper>
@@ -34,7 +60,8 @@ function BigCart(props) {
 
 const mapStateToProps = (state) => {
   return {
-    cart: state.cartReducer.cart
+    cart: state.cartReducer.cart,
+    totalItems: state.cartReducer.totalCount
   }
 }
 

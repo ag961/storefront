@@ -2,3 +2,19 @@
   max-width: 1600px;
   margin: 0 auto;
 }
+
+.storeLogo{
+  all: inherit;
+  border: 1px solid transparent ;
+  border-radius: 0;
+  padding: 0px 8px;
+  // max-height: 2rem;
+  &:hover{
+    cursor: pointer;
+    border: 1px solid white;
+  }
+}
+
+.cartIcon{
+  all: inherit;
+}
