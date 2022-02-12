@@ -22,7 +22,7 @@ let initialState = {
 // }
 
 export const fetchProducts = async (dispatch) => {
-  let response = await axios.get('http://localhost:3001/products');
+  let response = await axios.get(`${process.env.REACT_APP_SERVER}/products`);
   let products = response.data;
   dispatch(actualFetchProducts(products))
 }
