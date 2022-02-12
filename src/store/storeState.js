@@ -1,13 +1,9 @@
+import axios from 'axios';
+
 //1 design store
 
 let initialState = {
-  categories: [
-    { name: 'electronics', displayName: 'ELECTRONICS' },
-    { name: 'food', displayName: 'FOOD' },
-    { name: 'vehicles', displayName: 'VEHICLES' },
-    { name: 'toys', displayName: 'TOYS' },
-    { name: 'furniture', displayName: 'FURNITURE' }
-  ],
+  categories: [],
   activeCategory: ''
 }
 
@@ -20,6 +16,19 @@ export const changeActiveCategory = (category) => {
   }
 }
 
+export const fetchCategories = async (dispatch) => {
+  let response = await axios.get('http://localhost:3001/categories');
+  console.log('response', response.data)
+  let fetchedCategories = response.data;
+  dispatch(actualFetchCategories(fetchedCategories));
+}
+
+function actualFetchCategories(data) {
+  return {
+    type: 'CATEGORIES/LOAD_FETCHED_CATEGORIES',
+    payload: data
+  }
+}
 
 //3 design reducer
 
@@ -28,6 +37,11 @@ export const activeCategoryReducer = (state = initialState, action) => {
   let { type, payload } = action;
 
   switch (type) {
+
+    case 'CATEGORIES/LOAD_FETCHED_CATEGORIES':
+      console.log('hit case', payload)
+      return { ...state, categories: payload }
+
     case 'CHANGE_CATEGORY':
       return { ...state, activeCategory: payload }
     default:

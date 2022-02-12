@@ -12,10 +12,8 @@ function SimpleCart(props) {
           {props.cart.map((product, i) => <li key={i}>
             <Box className="simpleCart__item">
               <span>{product.displayName}</span>
-              <IconButton edge="start" aria-label="delete-small">
-                <HighlightOffIcon style={{ color: 'red' }}
-                  onClick={() => { props.deleteFromCart(product) }}
-                />
+              <IconButton edge="start" aria-label="delete-small" onClick={() => { props.deleteFromCart(product) }}>
+                <HighlightOffIcon style={{ color: 'red' }} />
               </IconButton>
             </Box>
           </li>)}

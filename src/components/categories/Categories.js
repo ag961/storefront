@@ -1,13 +1,27 @@
-import { Box, Button} from "@mui/material";
-import './categories.scss';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeActiveCategory } from '../../store/storeState';
+import { fetchCategories } from '../../store/storeState';
+// styling
+import './categories.scss';
+import { Box, Button } from "@mui/material";
+//========================================
+
 
 function Categories(props) {
+
+  const categories = useSelector(state => state.activeCategoryReducer.categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('running useEffect');
+    dispatch(fetchCategories);
+  }, [dispatch])
+
   return (
     <Box className="categories">
       <Box className="categories__buttongroup">
-        {props.categories.map((category, i) => <Button
+        {categories.map((category, i) => <Button
           key={i}
           sx={{
             "&.MuiButton-text:hover": { border: "1px white solid" },
@@ -16,18 +30,10 @@ function Categories(props) {
             maxHeight: "2rem"
           }}
           color="inherit"
-          onClick={() => { props.changeActiveCategory(category.name) }}>{category.displayName}</Button>)}
+          onClick={() => { dispatch(changeActiveCategory(category.name)) }}>{category.displayName}</Button>)}
       </Box>
     </Box>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.activeCategoryReducer.categories
-  }
-}
-
-const mapDisptachToProps = { changeActiveCategory };
-
-export default connect(mapStateToProps, mapDisptachToProps)(Categories);
+export default Categories;

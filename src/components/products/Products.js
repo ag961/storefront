@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Box } from "@mui/material";
 import ItemCard from "./ItemCard";
 import './products.scss';
 import { connect } from 'react-redux';
+import { fetchProducts } from '../../store/products';
 
 
 function Products(props) {
+
+const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchProducts)
+  }, [dispatch])
 
   return (
     <Box className="products">
