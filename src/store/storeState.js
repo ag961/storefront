@@ -17,7 +17,7 @@ export const changeActiveCategory = (category) => {
 }
 
 export const fetchCategories = async (dispatch) => {
-  let response = await axios.get('http://localhost:3001/categories');
+  let response = await axios.get(`${process.env.REACT_APP_SERVER}/categories`);
   console.log('response', response.data)
   let fetchedCategories = response.data;
   dispatch(actualFetchCategories(fetchedCategories));
