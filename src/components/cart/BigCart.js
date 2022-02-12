@@ -17,7 +17,7 @@ function BigCart(props) {
         <Divider />
         <List>
           {props.cart.map((product, i) => (
-            <>
+            <div key={i}>
               <ListItem disableGutters={true}>
                 <ListItemText
                   primary={<Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
@@ -31,18 +31,18 @@ function BigCart(props) {
                   }
                   secondary={
                     <>
-                      <p className="list__paragraph1">Price: ${product.price}</p>
+                      <span className="list__paragraph1">Price: ${product.price}</span>
                       <Box sx={{ display: "flex", gap: "1rem" }}>
-                        <p className="list__paragraph2"> Qty: {product.orderedQuantity}</p>
+                        <span className="list__paragraph2"> Qty: {product.orderedQuantity}</span>
                         <Divider orientation="vertical" flexItem />
-                        <p className="list__paragraph2 list__delete" onClick={() => { props.deleteFromCart(product) }}>Delete</p>
+                        <span className="list__paragraph2 list__delete" onClick={() => { props.deleteFromCart(product) }}>Delete</span>
                       </Box>
                     </>
                   }
                 />
               </ListItem>
               <Divider component="li" />
-            </>
+            </div>
           ))}
         </List>
       </div>
