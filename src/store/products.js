@@ -39,25 +39,25 @@ export const productsReducer = (state = initialState, action) => {
     case 'PRODUCTS/FETCH_PRODUCTS':
       return { ...state, products: payload }
 
-    case 'CART/ADD_TO_CART':
-      let newProducts = state.products.map(product => {
-        if (product.name === payload.name) {
-          return { ...product, count: product.count - 1 }
-        } else return product
-      })
-      return { ...state, products: newProducts }
+    // case 'CART/ADD_TO_CART':
+    //   let newProducts = state.products.map(product => {
+    //     if (product.name === payload.name) {
+    //       return { ...product, count: product.count - 1 }
+    //     } else return product
+    //   })
+    //   return { ...state }
 
-    case 'CART/DELETE_FROM_CART':
+    // case 'CART/DELETE_FROM_CART':
 
-      let products = state.products.map(product => {
-        if (product.name === payload.name) {
-          product.count += payload.orderedQuantity
-          return product
-        }
-        return product;
-      })
+    //   let products = state.products.map(product => {
+    //     if (product.name === payload.name) {
+    //       product.count += payload.orderedQuantity
+    //       return product
+    //     }
+    //     return product;
+    //   })
 
-      return { ...state, products }
+    //   return { ...state, products }
 
 
   }
