@@ -13,6 +13,7 @@ function Products(props) {
 const dispatch = useDispatch();
 
   useEffect(()=> {
+    console.log('running useEffect')
     dispatch(fetchProducts)
   }, [dispatch])
 

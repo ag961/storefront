@@ -20,6 +20,7 @@ function BigCart(props) {
             <div key={i}>
               <ListItem disableGutters={true}>
                 <ListItemText
+                  disableTypography={false}
                   primary={<Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
                     <span>
                       {product.displayName}
@@ -29,15 +30,17 @@ function BigCart(props) {
                     </span>
                   </Box>
                   }
+                  secondaryTypographyProps={{ component: "div" }}
+                  primaryTypographyProps={{ component: "div" }}
                   secondary={
-                    <>
+                    <div>
                       <span className="list__paragraph1">Price: ${product.price}</span>
                       <Box sx={{ display: "flex", gap: "1rem" }}>
                         <span className="list__paragraph2"> Qty: {product.orderedQuantity}</span>
                         <Divider orientation="vertical" flexItem />
                         <span className="list__paragraph2 list__delete" onClick={() => { props.deleteFromCart(product) }}>Delete</span>
                       </Box>
-                    </>
+                    </div>
                   }
                 />
               </ListItem>
